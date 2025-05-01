@@ -412,3 +412,7 @@ FROM Old_customers;
 
 ## RESULT
 Thus, the SQL queries to implement different types of constraints and DDL commands have been executed successfully.
+
+### Module 1 Score:
+
+![alt text](m1.png)
