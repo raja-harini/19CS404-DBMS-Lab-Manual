@@ -37,125 +37,305 @@ HAVING condition;
 ```
 
 **Question 1**
---
--- Paste Question 1 here
 
-```sql
--- Paste your SQL code below for Question 1
+How many appointments are scheduled for each doctor?
+
+Sample table:Appointments Table
+
+![alt text](1.png)
+
+For example:
+
+##### Result
+DoctorID    TotalAppointments
+----------  -----------------
+3           3
+4           2
+6           1
+7           3
+10          1
+
+#### Code:
+```
+SELECT DoctorID, COUNT(*) AS TotalAppointments
+FROM Appointments 
+GROUP BY DoctorID;
 ```
 
 **Output:**
-
-![Output1](output.png)
+![alt text](op1.png)
 
 **Question 2**
----
--- Paste Question 2 here
 
-```sql
--- Paste your SQL code below for Question 2
+How many medical records does each doctor have?
+
+Sample table:MedicalRecords Table
+
+![alt text](2.png)
+
+For example:
+
+##### Result
+
+DoctorID    TotalRecords
+----------  ------------
+3           4
+5           1
+6           1
+7           1
+8           3
+
+#### Code:
+```
+SELECT DoctorID, COUNT(*) AS TotalRecords
+FROM MedicalRecords 
+GROUP BY DoctorID;
 ```
 
 **Output:**
-
-![Output2](output.png)
+![alt text](op2.png)
 
 **Question 3**
----
--- Paste Question 3 here
 
-```sql
--- Paste your SQL code below for Question 3
+How many doctors specialize in each medical specialty?
+
+Sample table:Doctors Table
+
+![alt text](3.png)
+
+For example:
+
+##### Result
+Specialty          TotalDocto
+-----------------  ----------
+Gastroenterology   1
+Neurology          1
+Obstetrics         3
+Ophthalmology      1
+Orthopedics        1
+Pediatrics         2
+Urology            1
+
+#### Code:
+```
+SELECT Specialty, COUNT(*) AS TotalDocto
+FROM Doctors 
+GROUP BY Specialty;
 ```
 
 **Output:**
-
-![Output3](output.png)
+![alt text](op3.png)
 
 **Question 4**
----
--- Paste Question 4 here
 
-```sql
--- Paste your SQL code below for Question 4
+Write a SQL query to calculate total available amount of fruits that has a price greater than 0.5 . Return total Count. 
+
+Note: Inventory attribute contains amount of fruits
+
+Table: fruits
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+unit        TEXT
+inventory   INTEGER
+price       REAL
+ 
+
+For example:
+
+##### Result
+total_available_amount
+----------------------
+160
+
+#### Code:
+```
+SELECT SUM(inventory) AS total_available_amount
+FROM fruits
+WHERE price>0.5;
 ```
 
-**Output:**
 
-![Output4](output.png)
+**Output:**
+![alt text](op4.png)
+
 
 **Question 5**
----
--- Paste Question 5 here
 
-```sql
--- Paste your SQL code below for Question 5
+Write a SQL query to Calculate the average email length (in characters) for people who lives in Mumbai city
+
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT   
+city        TEXT
+email       TEXT
+phone       INTEGER
+For example:
+
+##### Result
+avg_email_length_below_30
+-------------------------
+14.0
+
+#### Code:
+```
+SELECT AVG(LENGTH(email)) AS avg_email_length_below_30
+FROM customer
+WHERE city='Mumbai';
 ```
 
 **Output:**
-
-![Output5](output.png)
+![alt text](op5.png)
 
 **Question 6**
----
--- Paste Question 6 here
+Write a SQL query to find the average length of email addresses (in characters):
 
-```sql
--- Paste your SQL code below for Question 6
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+city        TEXT
+email       TEXT
+phone       INTEGER
+For example:
+
+##### Result
+avg_email_length
+----------------
+15.0
+
+#### Code:
+```
+SELECT AVG(LENGTH(email)) AS avg_email_length
+FROM customer;
 ```
 
 **Output:**
-
-![Output6](output.png)
+![alt text](op6.png)
 
 **Question 7**
----
--- Paste Question 7 here
 
-```sql
--- Paste your SQL code below for Question 7
+Write a SQL query to find  how many employees work in California?
+
+Table: employee
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
+ 
+
+For example:
+
+##### Result
+employees_in_california
+-----------------------
+2
+
+#### Code:
+```
+SELECT COUNT(*) AS employees_in_california
+FROM employee
+WHERE city='California';
 ```
 
 **Output:**
-
-![Output7](output.png)
+![alt text](op7.png)
 
 **Question 8**
----
--- Paste Question 8 here
 
-```sql
--- Paste your SQL code below for Question 8
+Write a SQL query to identify the cities (addresses) where the average salary is greater than Rs. 5000, as per the "customer1" table.
+
+Sample table: customer1
+
+![alt text](8.png)
+
+For example:
+
+##### Result
+address     AVG(salary)
+----------  -----------
+Bhopal      8500.0
+Indore      10000.0
+Mumbai      6500.0
+
+#### Code:
+```
+SELECT address, AVG(salary)
+FROM customer1
+GROUP BY address
+HAVING AVG(salary)>5000;
 ```
 
 **Output:**
-
-![Output8](output.png)
+![alt text](op8.png)
 
 **Question 9**
----
--- Paste Question 9 here
 
-```sql
--- Paste your SQL code below for Question 9
+Write the SQL query that accomplishes the grouping of data by age, calculates the average income for each age group, and includes only those age groups where the average income falls between 300,000 and 500,000.
+
+Sample table: employee
+
+![alt text](9.png)
+
+For example:
+
+##### Result
+age         AVG(income)
+----------  -----------
+45          450000.0
+
+#### Code:
+```
+SELECT age, AVG(income)
+FROM employee
+GROUP BY age
+HAVING AVG(income) BETWEEN 300000 AND 500000;
 ```
 
 **Output:**
-
-![Output9](output.png)
+![alt text](op9.png)
 
 **Question 10**
----
--- Paste Question 10 here
 
-```sql
--- Paste your SQL code below for Question 10
+Write the SQL query that achieves the selection of product names and the maximum price for each category from the "products" table, and includes only those products where the maximum price is greater than 15.
+
+Sample table: products
+
+![alt text](10.png)
+
+For example:
+
+##### Result
+category_id  product_name  Price
+-----------  ------------  ----------
+1            Orange        15.5
+2            Monitor       25
+
+#### Code:
+```
+SELECT category_id, product_name, MAX(price) AS Price
+FROM products
+GROUP BY category_id
+HAVING MAX(price)>15;
 ```
 
 **Output:**
-
-![Output10](output.png)
+![alt text](op10.png)
 
 
 ## RESULT
 Thus, the SQL queries to implement aggregate functions, GROUP BY, and HAVING clause have been executed successfully.
+
+### Module 3 Result:
+![alt text](m3.png)
